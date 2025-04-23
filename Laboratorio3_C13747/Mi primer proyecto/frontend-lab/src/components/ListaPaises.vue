@@ -28,16 +28,17 @@
 </template>
 
 <script>
+  import axios from "axios";
   export default {
     name: 'ListaPaises',
     data() {
       return {
         paises: [
-          { nombre: "Costa Rica", continente: "América", Idioma: "Español" },
-          { nombre: "Japón", continente: "Asia", Idioma: "Japonés" },
-          { nombre: "Corea del Sur", continente: "Asia", Idioma: "Coreano" },
-          { nombre: "Italia", continente: "Europa", Idioma: "Italiano" },
-          { nombre: "Alemania", continente: "Europa", Idioma: "Alemán" },
+          { nombre: "Costa Rica", continente: "América", idioma: "Español" },
+          { nombre: "Japón", continente: "Asia", idioma: "Japonés" },
+          { nombre: "Corea del Sur", continente: "Asia", idioma: "Coreano" },
+          { nombre: "Italia", continente: "Europa", idioma: "Italiano" },
+          { nombre: "Alemania", continente: "Europa", idioma: "Alemán" },
         ],
       };
     },
