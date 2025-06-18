@@ -1,8 +1,11 @@
 <template>
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow" style="max-width: 400px;width: 100%">
+            <div v-if="mensajeExito" class="alert alert-success text-center">
+            {{ mensajeExito }}
+            </div>
             <h3 class="text-center">
-                Formulario de creación de países
+                Formulario de creaciï¿½n de paï¿½ses
             </h3>
             <form @submit.prevent="guardarPais">
                 <div class="form-group">
@@ -23,12 +26,12 @@
                             Seleccione un
                             continente
                         </option>
-                        <option>África</option>
+                        <option>ï¿½frica</option>
                         <option>Asia</option>
                         <option>Europa</option>
-                        <option>América</option>
-                        <option>Oceanía</option>
-                        <option>Antártida</option>
+                        <option>Amï¿½rica</option>
+                        <option>Oceanï¿½a</option>
+                        <option>Antï¿½rtida</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -50,32 +53,37 @@
 </template>
 
 <script>
-    import axios from "axios";
-    export default {
-        data() {
-            return {
-                datosFormulario: {nombre: "", continente: "", idioma: ""},
-            };
-        },
-        methods: {
-            guardarPais() {
-                console.log("Datos a guardar:", this.datosFormulario);
-                axios.post("https://localhost:7110/api/Paises", {
-                    nombre: this.datosFormulario.nombre,
-                    continente: this.datosFormulario.continente,
-                    idioma: this.datosFormulario.idioma,
-                })
-                .then(function (response) {
-                    console.log(response);
-                    window.location.href = "/";
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            },
-        },
-    };
+  import axios from "axios";
+  export default {
+    data() {
+      return {
+        mensajeExito: "",
+        datosFormulario: { nombre: "", continente: "", idioma: "" },
+      };
+    },
+    methods: {
+      guardarPais() {
+        console.log("Datos a guardar:", this.datosFormulario);
+        axios.post("https://localhost:7110/api/Paises", {
+          nombre: this.datosFormulario.nombre,
+          continente: this.datosFormulario.continente,
+          idioma: this.datosFormulario.idioma,
+        })
+        .then((response) => {
+          this.mensajeExito = "PaÃ­s agregado correctamente";
+          console.log(response);
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1500);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      },
+    },
+  };
 </script>
+
 
 <style lang="scss" scoped>
 </style>
